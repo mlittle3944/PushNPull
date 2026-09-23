@@ -21,3 +21,37 @@ If you are developing a production application, we recommend using TypeScript wi
 Contributor: Jania Little
 Contributor: Sunny Suarez
 # PushNPull
+
+#Introduction
+
++Purpose 
+This document defines the functional and non-functional requirements for the proposed beginner workout web application. It establishes a clear understanding between stakeholders, developers, and end users of what the system is expected to accomplish. The design, implementation, and testing activities will be derived and validated against the requirements.
+
++Scope
+
+The system will provide a web application that integrates fitness APIs to guide beginner San Diego State University (SDSU) students at the Aztec Recreation Center (ARC) Express with personalized workout routines and automated progress logging. The scope includes user onboarding, goal-based workout routine selection, step-by-step exercise tracking, session logging, and history viewing. Out-of-scope features include advanced powerlifting analytics, automated posture recognition/computer vision, social messaging, and live personal trainer booking. 
+
++Tech Stack 
+
+Frontend: HTML, CSS, JavaScript
+Backend & Database: Supabase (PostgreSQL Database & Supabase Auth)
+Deployment/Version Control: GitHub with continuous integration via GitHub Actions
+
++Asssumptions
+
+● The  users have internet access.
+● SDSU students have sufficient basic digital literacy to navigate a web browser.
+● The Users have access to a smartphone or mobile device with active internet access while inside the SDSU ARC Express.
+●The system operates in the US Pacific Time (PT) for all schedules.
+●All Workout plans, and exercises will be maintained by the development team.
+●Users should have access to basic(dumbells, mat, resistance bands) or gym equipment.
+●The system is only single-user sessions.
+
++Dependencies
+
+● Supabase (auth, database, storage)
+● Supabase Postgres (onboarding, log session, history, NFR)
+●HTML/CSS/Javascript (frontend)
+●Supabase Postgres (user profiles, progress tracking, and workout history)
+●Host(Vercel,Github, or Cloudflare pages)
+
