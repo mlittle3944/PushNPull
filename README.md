@@ -20,8 +20,8 @@ If you are developing a production application, we recommend using TypeScript wi
 # PushNPull
 Contributor: Jania Little
 Contributor: Sunny Suarez
-# PushNPull
 Contributor: Alexa Quintero
+Contributor: Yuno Dela Pena
 
 #Introduction
 
