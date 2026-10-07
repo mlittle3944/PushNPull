@@ -21,6 +21,7 @@ If you are developing a production application, we recommend using TypeScript wi
 Contributor: Jania Little
 Contributor: Sunny Suarez
 # PushNPull
+Contributor: Alexa Quintero
 
 #Introduction
 
