@@ -1,20 +1,25 @@
-# React + Vite
+# PushNPull
+Contributor: Alexa Quintero
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A step-by-step workout web app for beginner SDSU students at the ARC Express.
 
-Currently, two official plugins are available:
+Contributors: Jania Little, Sunny Suarez
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Getting started
 
-## React Compiler
+1. Install [Node.js 22](https://nodejs.org/), then:
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+   ```bash
+   npm install
+   ```
 
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
+2. Create a `.env` file in the project root (it's git-ignored, so ask a teammate for the values,
+   found in Supabase under **Project Settings → API**):
 
-## Expanding the ESLint configuration
+   ```
+   VITE_SUPABASE_URL=https://xxxx.supabase.co
+   VITE_SUPABASE_ANON_KEY=your-anon-key
+   ```
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 # PushNPull
@@ -22,8 +27,49 @@ Contributor: Jania Little
 Contributor: Sunny Suarez
 Contributor: Alexa Quintero
 Contributor: Yuno Dela Pena
+3. Set up the database (only once per Supabase project). In the Supabase dashboard open
+   **SQL Editor**, paste and run `supabase/migrations/20261007000000_initial_schema.sql`,
+   then `supabase/seed.sql`. Both are safe to run again.
 
-#Introduction
+4. Run it:
+
+   ```bash
+   npm run dev     # http://localhost:5173
+   npm test        # unit tests (Vitest)
+   npm run lint
+   ```
+
+## How the app is organized
+
+| Path | What's there |
+| --- | --- |
+| `src/App.jsx` | Every page and its URL |
+| `src/pages/` | Login, Onboarding, Home (my plan), Workout (step-by-step), ExerciseBrowser |
+| `src/auth/` | Who is signed in + their profile (`useAuth()`) |
+| `src/lib/api.js` | All Supabase queries |
+| `src/lib/plan.js` | Picks a routine and adjusts sets/reps/rest for the user's goal and equipment (tested in `plan.test.js`) |
+| `supabase/` | Database schema, security rules and starter exercises/routines |
+
+User flow: **Sign up → Onboarding (goal, experience, days per week, equipment) → My plan → Start a workout → one exercise at a time.**
+
+## Deploying (Vercel)
+
+1. On vercel.com, **Add New → Project** and import this GitHub repo (Vercel detects Vite).
+2. Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` under **Environment Variables**, then deploy.
+3. In Supabase, **Authentication → URL Configuration**: set **Site URL** to the Vercel URL so
+   confirmation emails link to the live site.
+
+`vercel.json` makes page refreshes work on routes like `/workout/1`.
+
+## Not built yet (good next steps)
+
+- Logging sets, reps and weights during a workout (`workout_sessions` exists; add a `session_sets` table)
+- History tab and progress charts
+- Recommended weights based on past sessions
+- Rest timer, exercise images/videos
+- Pulling extra exercises from an external fitness API
+
+## Project overview
 
 +Purpose 
 This document defines the functional and non-functional requirements for the proposed beginner workout web application. It establishes a clear understanding between stakeholders, developers, and end users of what the system is expected to accomplish. The design, implementation, and testing activities will be derived and validated against the requirements.
@@ -34,7 +80,7 @@ The system will provide a web application that integrates fitness APIs to guide 
 
 +Tech Stack 
 
-Frontend: HTML, CSS, JavaScript
+Frontend: React (Vite), JavaScript, CSS
 Backend & Database: Supabase (PostgreSQL Database & Supabase Auth)
 Deployment/Version Control: GitHub with continuous integration via GitHub Actions
 
