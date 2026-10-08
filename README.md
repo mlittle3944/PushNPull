@@ -21,6 +21,12 @@ Contributors: Jania Little, Sunny Suarez
    VITE_SUPABASE_ANON_KEY=your-anon-key
    ```
 
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# PushNPull
+Contributor: Jania Little
+Contributor: Sunny Suarez
+Contributor: Alexa Quintero
+Contributor: Yuno Dela Pena
 3. Set up the database (only once per Supabase project). In the Supabase dashboard open
    **SQL Editor**, paste and run `supabase/migrations/20261007000000_initial_schema.sql`,
    then `supabase/seed.sql`. Both are safe to run again.
