@@ -1,4 +1,3 @@
-// UML stub for the "View My Workout Plan" slice (owner: Jania)
 import { getRoutine } from '../lib/api'
 import WorkoutDay from './WorkoutDay'
 
