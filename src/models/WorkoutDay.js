@@ -1,4 +1,3 @@
-// UML stub for the "View My Workout Plan" slice (owner: Jania).
 export default class WorkoutDay {
   #dayNumber
   #label
