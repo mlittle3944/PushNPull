@@ -1,5 +1,3 @@
-// UML stub for the "View My Workout Plan" slice (owner: Jania).
-// Matches docs/uml/slices/jania-view-workout-plan/classes.png
 import Routine from './Routine'
 import { chooseExercise, prescribe } from '../lib/plan'
 
