@@ -5,7 +5,6 @@ export default class PlanBuilder {
   #profile
   #catalog
 
-  /** profile: shared Profile (owner yk). catalog: Exercise[] from Exercise.fetchAll() (owner Jeann72). */
   constructor(profile, catalog) {
     this.#profile = profile
     this.#catalog = catalog
