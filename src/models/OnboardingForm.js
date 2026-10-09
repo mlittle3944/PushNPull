@@ -1,5 +1,3 @@
-// UML stub for the "Complete Onboarding" slice (owner: Jania).
-// Matches docs/uml/slices/jania-complete-onboarding/classes.png
 import RoutineSelector from './RoutineSelector'
 
 export default class OnboardingForm {
@@ -8,7 +6,6 @@ export default class OnboardingForm {
   #daysPerWeek
   #equipment
 
-  /** profile: the shared Profile object (owned by yk) that this form fills in. */
   constructor(profile, { goal = '', experience = '', daysPerWeek = 3, equipment = [] } = {}) {
     this.profile = profile
     this.#goal = goal
@@ -17,7 +14,6 @@ export default class OnboardingForm {
     this.#equipment = equipment
   }
 
-  /** Validate answers, pick a routine, and save the profile. */
   async submit() {
     if (!this.#validate()) throw new Error('Pick a goal and experience level first.')
     const routineId = new RoutineSelector().pickRoutine(this.#daysPerWeek, this.#experience)
