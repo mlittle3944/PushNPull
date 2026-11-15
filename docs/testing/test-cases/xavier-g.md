@@ -34,7 +34,7 @@
 **Title:** Save profile preferences without a display name
 **Traces to:** REQ-XG-04
 **Test type:** System
-**Preconditions:** Signed in to a test account with an existing saved profile. The application is connected to its database.
+**Preconditions:** Signed in to a test account with an existing saved profile. The application is running locally and connected to the inherited Supabase database.
 **Test data:** Display name: empty; goal: general_fitness; experience: new; days per week: 3; equipment: dumbbells and bodyweight only.
 
 **Steps:**
@@ -49,6 +49,6 @@
 **Status:** Fail
 **Severity:** Major
 **V or V:** Verification
-**GitHub Issue:** Pending creation.
+**GitHub Issue:** [#78](https://github.com/mlittle3944/PushNPull/issues/78)
 
 ---
