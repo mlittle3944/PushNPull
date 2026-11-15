@@ -18,8 +18,8 @@
 3. Reload the browser, then reopen the form to edit your answers.
 
 **Expected result:** The form displays Xavier QA, general fitness, beginner experience, 3 days per week, and only dumbbells and bodyweight selected.
-**Actual result:** Not run yet.
-**Status:** Not run.
+**Actual result:** The profile saved without errors and the workout plan appeared. After reloading and selecting Edit answers, all five fields matched the submitted test data.
+**Status:** Pass
 **Severity:** N/A
 **V or V:** N/A
 **GitHub Issue:** N/A
