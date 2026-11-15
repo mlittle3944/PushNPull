@@ -79,6 +79,48 @@
 
 ---
 
+**Test ID:** XG-04
+**From Part 6:** New
+**Written by:** Xavier Garcia
+**Title:** Prevent one account from reading another account's profile
+**Traces to:** NFR-XG-01
+**Test type:** Security
+**Preconditions:** The application is running locally through Vite and connected to the inherited Supabase database. Two test accounts have saved profiles. Account A is signed in through a normal browser window, and Account B is signed in through a private window.
+**Test data:** Account A has the profile name Xavier QA. Account B has ID 5ee3dd9e-0723-4be3-846e-58a110c35390.
+
+**Steps:**
+1. Open Developer Tools → Console in Account B's private window.
+2. Run the following code to confirm that Account B can read its own saved profile:
+
+   ```javascript
+   var vvApiB = await import('/src/lib/api.js');
+   console.log('B reading own profile:', await vvApiB.getProfile('5ee3dd9e-0723-4be3-846e-58a110c35390'));
+   ```
+
+3. Open Developer Tools → Console in Account A's normal window.
+4. Run the following code to identify Account A, retrieve its own profile, and request Account B's profile:
+
+   ```javascript
+   var vvClientA = (await import('/src/supabaseClient.js')).supabase;
+   var vvUserA = await vvClientA.auth.getUser();
+   var vvApiA = await import('/src/lib/api.js');
+
+   console.log('Account A ID:', vvUserA.data.user?.id);
+   console.log('A reading own profile:', await vvApiA.getProfile(vvUserA.data.user.id));
+   console.log('A reading B profile:', await vvApiA.getProfile('5ee3dd9e-0723-4be3-846e-58a110c35390'));
+   ```
+
+5. Confirm that Account A's ID differs from Account B's ID and compare the profile query results.
+
+**Expected result:** Each account retrieves its own saved profile. Account A's request for Account B's profile returns null without exposing Account B's profile data.
+**Actual result:** Account B retrieved its own profile. Account A had a different user ID and retrieved its own profile. The request from Account A for Account B's profile returned null.
+**Status:** Pass
+**Severity:** N/A
+**V or V:** N/A
+**GitHub Issue:** N/A
+
+---
+
 **Test ID:** XG-05
 **From Part 6:** New
 **Written by:** Xavier Garcia
