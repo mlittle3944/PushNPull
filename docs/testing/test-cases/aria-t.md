@@ -108,13 +108,14 @@ HOW TO USE THIS FILE
 **From Part 6:** New
 **Written by:** Aria
 **Title:** Successful login and access to the application
-**Traces to:** G-AT-01
+**Traces to:** G-AT-01, REQ-AT-02
 **Test type:** Acceptance
 **Preconditions:** The app is running. A registered test account exists and is confirmed if email verification is required. The user is signed out.
 
 **Test data:**
-- Email: A registered test account email
-- Password: The correct test account password
+- Email: barakiarya118@gmail.com
+- Password: The password for that test account
+- Account state: Confirmed and active
 
 **Steps:**
 1. Open the PushNPull app.
@@ -128,7 +129,7 @@ HOW TO USE THIS FILE
 
 **Actual result:** I signed in using the correct email and password. The system accepted my login and opened the onboarding page.
 
-**Status:** Passi 
+**Status:** Pass
 **Severity:** N/A
 **V or V:** Validation
 **GitHub Issue:** N/A
