@@ -52,3 +52,32 @@
 **GitHub Issue:** [#78](https://github.com/mlittle3944/PushNPull/issues/78)
 
 ---
+
+**Test ID:** XG-05
+**From Part 6:** New
+**Written by:** Xavier Garcia
+**Title:** Update workout preferences without creating another account
+**Traces to:** G-XG-01, REQ-XG-01, REQ-XG-02
+**Test type:** Acceptance
+**Preconditions:** Signed in to the same test account used for XG-01, with its existing saved profile.
+**Test data:** Display name: Xavier QA; goal: Build muscle; experience: I've lifted a few times before; days per week: 4; equipment: Machines only.
+
+**Steps:**
+1. Open the workout plan page and click "Edit answers."
+2. Enter Xavier QA as the display name.
+3. Change the goal to Build muscle.
+4. Change the experience to I've lifted a few times before.
+5. Select 4 workout days per week.
+6. Select Machines and deselect all other equipment.
+7. Click "Show me my plan."
+8. After the plan loads, reload the browser.
+9. Click "Edit answers" and check the saved values.
+
+**Expected result:** The user can update their preferences using the existing account. After reloading, the form shows Xavier QA, Build muscle, I've lifted a few times before, 4 days per week, and Machines only.
+**Actual result:** The updated answers saved on the same account. After refreshing and reopening the form, the display name, goal, experience, workout frequency, and equipment matched the updated values.
+**Status:** Pass
+**Severity:** N/A
+**V or V:** N/A
+**GitHub Issue:** N/A
+
+---
