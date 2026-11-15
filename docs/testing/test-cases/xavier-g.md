@@ -28,6 +28,32 @@
 
 ---
 
+**Test ID:** XG-02
+**From Part 6:** New
+**Written by:** Xavier Garcia
+**Title:** Reject profile submission when a goal or experience level is missing
+**Traces to:** REQ-XG-03
+**Test type:** Negative
+**Preconditions:** Signed in to a new test account with an incomplete profile. The application is running locally and connected to its database.
+**Test data:** Attempt A: display name Xavier QA, goal Get healthier overall, experience unselected. Attempt B: display name Xavier QA Two, goal unselected, experience I'm brand new to the gym. Both attempts use 3 days per week with Machines, Dumbbells, and Bodyweight selected; Cable station is unchecked.
+
+**Steps:**
+1. Open the new account's profile form.
+2. Enter the data for Attempt A, leaving both experience options unselected.
+3. Click "Show me my plan" and record the result.
+4. Reload the page to return to the incomplete profile form.
+5. Enter the data for Attempt B, leaving all goal options unselected.
+6. Click "Show me my plan" and record the result.
+
+**Expected result:** Both submissions are blocked. The application stays on the form and displays "Pick a goal and your experience level so we can choose your plan."
+**Actual result:** Both attempts displayed the expected message and remained on the profile form. Neither attempt opened the workout plan.
+**Status:** Pass
+**Severity:** N/A
+**V or V:** N/A
+**GitHub Issue:** N/A
+
+---
+
 **Test ID:** XG-03
 **From Part 6:** New
 **Written by:** Xavier Garcia
