@@ -7,8 +7,8 @@
 
 | Area of the system | Owner | ID prefix |
 |---|---|---|
+| Login and Signup | Aria Toryalai | AT |
 | User Profile | Xavier Garcia | XG |
-| | | |
 | | | |
 | | | |
 
@@ -20,6 +20,30 @@ RULES
 - Status: Confirmed or Suspected bug. No Unconfirmed allowed. Every Suspected bug needs a GitHub Issue.
 - The test: could a stranger write a Pass or Fail test without asking you a question?
 -->
+
+---
+
+## Section: Login and Signup (Aria)
+
+### Stakeholder Goals
+
+| ID | Stakeholder | Goal |
+|---|---|---|
+| G-AT-01 | App users | Users can create an account and log in to access their workout plans. |
+
+### Functional Requirements
+
+| ID | Requirement | Status | From Part 5 |
+|---|---|---|---|
+| REQ-AT-01 | The system shall allow users to sign up with a valid email and a password of at least 6 characters. | Confirmed | New |
+| REQ-AT-02 | The system shall allow registered users to sign in with the correct email and password. | Confirmed | New |
+| REQ-AT-03 | The system shall display an error message when a user enters an incorrect password. | Confirmed | New |
+
+### Non-Functional Requirements
+
+| ID | Requirement | Status | From Part 5 |
+|---|---|---|---|
+| NFR-AT-01 | The system shall hide password characters while users type in the password field. | Confirmed | New |
 
 ---
 
@@ -61,30 +85,6 @@ RULES
 - XG-05 passed: updated preferences remained saved on the same account after refreshing.
 
 Testing used the locally running application connected to the inherited Supabase database. The security result covers the cross-account profile read tested in XG-04; it does not establish that every security control has been tested.
-
----
-
-## Section: [Your Area] ([Your Name])
-
-### Stakeholder Goals
-
-| ID | Stakeholder | Goal |
-|---|---|---|
-| | | |
-
-### Functional Requirements
-
-| ID | Requirement | Status | From Part 5 |
-|---|---|---|---|
-| | | | |
-| | | | |
-| | | | |
-
-### Non-Functional Requirements
-
-| ID | Requirement | Status | From Part 5 |
-|---|---|---|---|
-| | | | |
 
 ---
 
