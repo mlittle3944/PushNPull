@@ -31,7 +31,7 @@ HOW TO USE THIS FILE
 **Test data:**
 User: existing test user with a profile
 Workout: first available workout in the user's plan
-Exercise: first excercise in the selected workout
+Exercise: first exercise in the selected workout
 **Steps:**
 1. Open the PushNPull application and sign in
 2. Go to the workout plan on the home page
@@ -39,7 +39,7 @@ Exercise: first excercise in the selected workout
 4. Compare the information displayed to the exercise data in the assigned workout plan
 
 **Expected result:**
-The application displays the current excercise's name, number of sets, reps, and instructions, and matches the workout plan.
+The application displays the current exercises name, number of sets, reps, and instructions, and matches the workout plan.
 **Actual result:**
 **Status:** (Pass / Fail)
 
@@ -54,7 +54,7 @@ The application displays the current excercise's name, number of sets, reps, and
 **Preconditions:**
  - PushNPull is running
  - User is signed into an account with a completed profile
- - The user has an assigned workout with more than one excercise
+ - The user has an assigned workout with more than one exercise
 **Test data:**
  - User: Existing test account with a completed profile
  - Workout: First available with at least two exercises
@@ -62,21 +62,22 @@ The application displays the current excercise's name, number of sets, reps, and
 **Steps:**
 1. Open PushNPull and sign in
 2. Navigate to the workout plan on the home page
-3. Start the first workout containing at least two excercises
+3. Start the first workout containing at least two exercises
 4. Record the name of the first exercise
 5. Click "Next exercise"
-6. Observe displayed excercise name and position on page
+6. Observe displayed exercise name and position on page
 
 
-**Expected result:** The app goes from the first exercise to the second in the workout routine. The displayed excercise name changes, and the counter updates.
-**Actual result:** Pass
+**Expected result:** The app goes from the first exercise to the second in the workout routine. The displayed exercise name changes, and the counter updates.
+**Actual result:** The next exercise is displayed and the counter increments.
+**Status:** Pass
 
 ---
 
 **Test ID:** CJ-03
 **From Part 6:** New
 **Written by:** Chris
-**Title:** Verify back button behaivor during excercises
+**Title:** Verify back button behavior during exercise
 **Traces to:** REQ-CJ-03
 **Test type:** Boundary Value
 **Preconditions:**
@@ -99,7 +100,8 @@ The application displays the current excercise's name, number of sets, reps, and
 
 **Expected result:** The back button is disabled when viewing the first exercise, and after advancing the the second exercise, the back button returns the user to the first exercise, with the counter updating.
 
-**Actual result:** Pass
+**Actual result:** The back button doesn't work on the first exercise, and works to go from 2 to 1.
+**Status:** Pass
 
 ---
 
@@ -127,7 +129,7 @@ Starting position: Exercise 1
 7. Click Finish
 8. Observe the completion screen
 **Expected result:** The user can follow the workout from beginning to end using the information and navigation tools provided by the app. After completing the last exercise, the user is given the option to return to their workout plan.
-**Actual result:**
+**Actual result:** I was able to start the workout and see each exercise using the next button. Each one showed me name, sets, reps, and how to do it. After getting to the last one, the app gave me a workout done screen with the option to return to my workout plan.
 **Status:** Pass
 
 ---
