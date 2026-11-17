@@ -10,7 +10,7 @@
 | Login and Signup | Aria Toryalai | AT |
 | User Profile | Xavier Garcia | XG |
 | Workout Plan | Daniel Elias | DE |
-| | | |
+| Workout Tracking | Chris Jahner | CJ |
 
 <!--
 RULES
@@ -113,24 +113,23 @@ Testing used the locally running application connected to the inherited Supabase
 
 ---
 
-## Section: [Your Area] ([Your Name])
+## Section: Workout Tracking (Chris)
 
 ### Stakeholder Goals
 
 | ID | Stakeholder | Goal |
 |---|---|---|
-| | | |
-
+| G-CJ-01 | Beginner Gym Users | Users should be able to follow a guided workout, understand the exercises they do, and know when they have completed a routine. |
 ### Functional Requirements
 
 | ID | Requirement | Status | From Part 5 |
 |---|---|---|---|
-| | | | |
-| | | | |
-| | | | |
+| REQ-CJ-01 | The app should show the current excercise's name, reps, sets, and instructions. | Confimred | New |
+| REQ-CJ-02 | Clicking next excersise should advance to the next exercise in the routine | Confimerd | New |
+| REQ-CJ-03 | The back button should be disabled on the first excercise and take the user to the previous excersise| Confimred | New |
 
 ### Non-Functional Requirements
 
 | ID | Requirement | Status | From Part 5 |
 |---|---|---|---|
-| | | | |
+| NFR-CJ-01 | Users should be able to navigate without a mouse using keyboard controls | Confirmed | New |
