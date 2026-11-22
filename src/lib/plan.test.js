@@ -100,4 +100,10 @@ describe('formatRest', () => {
     expect(formatRest(60)).toBe('1 min')
     expect(formatRest(45)).toBe('45 sec')
   })
+
+  it('formats negative rest time correctly', () => {
+    expect(formatRest(-10)).toBe('-10 sec')
+  })
+
 })
+
