@@ -32,7 +32,13 @@ export function labelFor(options, value) {
  * Fewer days → full body. 4 days, or brand new → upper/lower. 5+ days → push/pull/legs.
  */
 export function pickRoutineId({ days_per_week, experience }) {
-  if (!days_per_week || days_per_week <= 3) return 'full_body_3'
+  if (!Number.isInteger(days_per_week) ||
+      days_per_week < 2 ||
+      days_per_week > 6) {
+    throw new RangeError('Workout days must be between 2 and 6.')
+  }
+
+  if (days_per_week <= 3) return 'full_body_3'
   if (days_per_week === 4 || experience === 'new') return 'upper_lower_4'
   return 'push_pull_legs'
 }

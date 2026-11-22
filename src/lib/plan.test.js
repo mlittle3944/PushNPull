@@ -101,3 +101,43 @@ describe('formatRest', () => {
     expect(formatRest(45)).toBe('45 sec')
   })
 })
+describe('PR4 edge-case tests', () => {
+  it('rejects zero workout days', () => {
+    expect(() =>
+        pickRoutineId({
+          days_per_week: 0,
+          experience: 'new'
+        })
+    ).toThrow(RangeError)
+  })
+
+
+  it('rejects negative workout days', () => {
+    expect(() =>
+        pickRoutineId({
+          days_per_week: -1,
+          experience: 'new'
+        })
+    ).toThrow(RangeError)
+  })
+
+  it('rejects seven workout days', () => {
+    expect(() =>
+        pickRoutineId({
+          days_per_week: 7,
+          experience: 'some'
+        })
+    ).toThrow(RangeError)
+  })
+  it('checks zero seconds of rest', () => {
+    const result = formatRest(0)
+
+    expect(result).toBe('0 sec')
+  })
+
+  it('checks negative rest time', () => {
+    const result = formatRest(-10)
+
+    expect(result).toBe('-10 sec')
+  })
+})
