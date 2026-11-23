@@ -39,14 +39,28 @@ describe('pickRoutineId', () => {
 })
 
 describe('prescribe', () => {
-  it('lowers reps and adds rest on compound lifts for strength', () => {
-    expect(prescribe(catalog[0], 'get_stronger')).toEqual({ sets: 3, reps: '6-8', rest_seconds: 120 })
+  it('lowers reps for those with some experience and select the goal of getting stronger', () => {
+    expect(prescribe(catalog[1], 'get_stronger', 'some')).toEqual({ sets: 3, reps: '6-8', rest_seconds: 90 })
   })
-  it('raises reps and shortens rest for fat loss', () => {
-    expect(prescribe(catalog[0], 'lose_fat')).toEqual({ sets: 3, reps: '12-15', rest_seconds: 75 })
+
+  it('Keeps the reps default for a user with no experience and select the goal of getting stronger', () => {
+    expect(prescribe(catalog[1], 'get_stronger', 'new')).toEqual({ sets: 3, reps: '8-12', rest_seconds: 90 })
   })
-  it('leaves timed exercises alone', () => {
-    expect(prescribe(catalog[4], 'lose_fat')).toEqual({ sets: 3, reps: '20-40 sec', rest_seconds: 45 })
+
+  it('Reduces rest time for those with some experience and select the goal of losing fat ', () => {
+    expect(prescribe(catalog[1], 'lose_fat', 'some')).toEqual({ sets: 3, reps: '12-15', rest_seconds: 75 })
+  })
+
+  it('Keeps the rest time default for a user with no experience and select the goal of losing fat', () => {
+    expect(prescribe(catalog[1], 'lose_fat', 'new')).toEqual({ sets: 3, reps: '8-12', rest_seconds: 90 })
+  })
+
+  it('Adds a set for those with some experience and select the goal of building muscle ', () => {
+    expect(prescribe(catalog[1], 'build_muscle', 'some')).toEqual({ sets: 4, reps: '8-12', rest_seconds: 90 })
+  })
+
+  it('Keeps the sets default for a user with no experience and select the goal of building muscle', () => {
+    expect(prescribe(catalog[1], 'build_muscle', 'new')).toEqual({ sets: 3, reps: '8-12', rest_seconds: 90 })
   })
 })
 
@@ -151,3 +165,47 @@ describe('PR4 edge-case tests', () => {
     expect(formatRest(-10)).toBe('0 sec')
   })
 })
+describe('PR4 edge-case tests', () => {
+  it('rejects zero workout days', () => {
+    expect(() =>
+        pickRoutineId({
+          days_per_week: 0,
+          experience: 'new'
+        })
+    ).toThrow(RangeError)
+  })
+
+
+  it('rejects negative workout days', () => {
+    expect(() =>
+        pickRoutineId({
+          days_per_week: -1,
+          experience: 'new'
+        })
+    ).toThrow(RangeError)
+  })
+
+  it('rejects seven workout days', () => {
+    expect(() =>
+        pickRoutineId({
+          days_per_week: 7,
+          experience: 'some'
+        })
+    ).toThrow(RangeError)
+  })
+  it('checks zero seconds of rest', () => {
+    const result = formatRest(0)
+
+    expect(result).toBe('0 sec')
+  })
+
+  it('checks negative rest time', () => {
+    const result = formatRest(-10)
+
+      expect(result).toBe('0 sec')
+  })
+})
+
+  it('formats negative rest time correctly', () => {
+      expect(formatRest(-10)).toBe('0 sec')
+  })

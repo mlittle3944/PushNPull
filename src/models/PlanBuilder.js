@@ -19,7 +19,7 @@ export default class PlanBuilder {
         .getExercises()
         .map(({ id }) => this.#catalog.find((e) => e.id === id))
         .filter(Boolean)
-        .map((exercise) => this.#prescribe(this.#chooseExercise(exercise, this.#profile.equipment), this.#profile.goal))
+        .map((exercise) => this.#prescribe(this.#chooseExercise(exercise, this.#profile.equipment), this.#profile.goal, this.#profile.experience))
       return { dayNumber, label: day.label, exercises }
     })
   }
@@ -29,6 +29,6 @@ export default class PlanBuilder {
   }
 
   #prescribe(exercise, goal) {
-    return { ...exercise, ...prescribe(exercise, goal) }
+    return { ...exercise, ...prescribe(exercise, goal, experience) }
   }
 }
