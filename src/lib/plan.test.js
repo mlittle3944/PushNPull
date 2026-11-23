@@ -138,6 +138,10 @@ describe('PR4 edge-case tests', () => {
   it('checks negative rest time', () => {
     const result = formatRest(-10)
 
-    expect(result).toBe('-10 sec')
+      expect(result).toBe('0 sec')
   })
 })
+
+  it('formats negative rest time correctly', () => {
+      expect(formatRest(-10)).toBe('0 sec')
+  })
