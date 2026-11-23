@@ -32,7 +32,11 @@ export function labelFor(options, value) {
  * Fewer days → full body. 4 days, or brand new → upper/lower. 5+ days → push/pull/legs.
  */
 export function pickRoutineId({ days_per_week, experience }) {
-  if (!days_per_week || days_per_week <= 3) return 'full_body_3'
+  if (!Number.isInteger(days_per_week) || days_per_week < 2 || days_per_week > 6) {
+    throw new RangeError('Days per week must be between 2 and 6')
+  }
+
+  if (days_per_week <= 3) return 'full_body_3'
   if (days_per_week === 4 || experience === 'new') return 'upper_lower_4'
   return 'push_pull_legs'
 }
@@ -41,18 +45,28 @@ export function pickRoutineId({ days_per_week, experience }) {
  * Adjust sets/reps/rest for the user's goal.
  * Timed or per-side exercises ('20-40 sec', '8 each side') stay as written.
  */
-export function prescribe(exercise, goal) {
-  const base = { sets: exercise.sets, reps: exercise.reps, rest_seconds: exercise.rest_seconds }
+export function prescribe(exercise, goal, experience) {
+  const base = { sets: exercise.sets, reps: exercise.reps, rest_seconds: exercise.rest_seconds}
   if (/sec|each/.test(exercise.reps)) return base
+
+  const shorterRest =
+    experience === 'some' ? Math.max(30, exercise.rest_seconds - 15) : exercise.rest_seconds
 
   switch (goal) {
     case 'get_stronger':
-      return exercise.is_compound
-        ? { ...base, reps: '6-8', rest_seconds: exercise.rest_seconds + 30 }
+      return exercise.is_compound && experience === 'some'
+        ? { ...base, reps: '6-8'}
         : base
     case 'lose_fat':
+      return experience === 'some'
+        ? { ...base, reps: '12-15', rest_seconds: shorterRest }
+        : base
+    case 'build_muscle':
+      return experience === 'some'
+        ? { ...base, sets: base.sets + 1 }
+        : base
     case 'general_fitness':
-      return { ...base, reps: '12-15', rest_seconds: Math.max(30, exercise.rest_seconds - 15) }
+      return base
     default:
       return base
   }
@@ -103,7 +117,7 @@ export function buildPlan(routine, allExercises, profile) {
         used.add(exercise.id)
         return {
           ...exercise,
-          ...prescribe(exercise, profile?.goal),
+          ...prescribe(exercise, profile?.goal, profile?.experience),
           swappedFrom: swappedFrom?.name ?? null,
           missingEquipment,
         }
@@ -113,9 +127,17 @@ export function buildPlan(routine, allExercises, profile) {
 }
 
 /** 90 → "1 min 30 sec", 60 → "1 min", 45 → "45 sec" */
+
 export function formatRest(seconds) {
+  if (!Number.isFinite(seconds)) {
+    throw new TypeError('Rest time must be a number.')
+  }
+
+  seconds = Math.max(0, seconds)
+
   const min = Math.floor(seconds / 60)
   const sec = seconds % 60
+
   if (min && sec) return `${min} min ${sec} sec`
   if (min) return `${min} min`
   return `${sec} sec`

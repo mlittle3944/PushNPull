@@ -147,13 +147,15 @@ viewProfiles()
 3. Import the function to the workout.jsx file by placing this as the first line in the file: `import './profileTest.js'`
 4.  Make sure that you are at the workout hub that is layed out in the home.jsx
 5. Refresh the web broswer
-6. Press F12 and then go to the console log to see if you can access the data. 
+6. Press F12 and then go to the console log to see if you can see the user's profile data. 
 7. Sign out 
+8. Run `viewProfiles()` in the console prompt on the web browser
+9. See if the user's onboarding data is still visible
 
 **Expected result:** The user's profile information isn't able to be accessed when they are signed out from the website.
-**Actual result:** An locally unauthenticated user on the same device can retrieve the data in the profile table and access the previous user's personal data. 
-**Status:** Fail 
-**Severity:** Critical
+**Actual result:** The user sees an undefined object in the console log with none of the user's profile data. 
+**Status:** Pass
+**Severity:** N/A
 **V or V:** Verification
 **GitHub Issue:**
 

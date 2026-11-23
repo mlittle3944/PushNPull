@@ -5,7 +5,7 @@ import { buildPlan, pickRoutineId } from './plan'
 // Loads the user's routine + the exercise catalog and builds their personalised plan.
 export function usePlan(profile) {
   const routineId = profile ? (profile.routine_id ?? pickRoutineId(profile)) : null
-  const key = profile ? `${routineId}|${profile.goal}|${(profile.equipment ?? []).join(',')}` : null
+  const key = profile ? `${routineId}|${profile.goal}|${profile.experience}|${(profile.equipment ?? []).join(',')}`: null
   const [result, setResult] = useState({ key: null, routine: null, days: null, error: null })
 
   useEffect(() => {
