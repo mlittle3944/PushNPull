@@ -100,7 +100,15 @@ describe('formatRest', () => {
     expect(formatRest(60)).toBe('1 min')
     expect(formatRest(45)).toBe('45 sec')
   })
+
+  it('rejects invalid rest time inputs', () => {
+    expect(() => formatRest(undefined)).toThrow(RangeError)
+    expect(() => formatRest(null)).toThrow(RangeError)
+    expect(() => formatRest(NaN)).toThrow(RangeError)
+    expect(() => formatRest('invalid')).toThrow(RangeError)
+  })
 })
+
 describe('PR4 edge-case tests', () => {
   it('rejects zero workout days', () => {
     expect(() =>
@@ -134,21 +142,12 @@ describe('PR4 edge-case tests', () => {
     expect(result).toBe('0 sec')
   })
   
-  it('rejects invalid rest time inputs', () => {
-    expect(() => formatRest(undefined)).toThrow(RangeError)
-    expect(() => formatRest(null)).toThrow(RangeError)
-    expect(() => formatRest(NaN)).toThrow(RangeError)
-    expect(() => formatRest('invalid')).toThrow(RangeError)
-  })
-
   it('checks negative rest time', () => {
     const result = formatRest(-10)
-
-      expect(result).toBe('0 sec')
+    expect(result).toBe('0 sec')
   })
-
-})
 
   it('formats negative rest time correctly', () => {
-      expect(formatRest(-10)).toBe('0 sec')
+    expect(formatRest(-10)).toBe('0 sec')
   })
+})
