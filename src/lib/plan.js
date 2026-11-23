@@ -120,12 +120,11 @@ export function buildPlan(routine, allExercises, profile) {
 
 /** 90 → "1 min 30 sec", 60 → "1 min", 45 → "45 sec" */
 export function formatRest(seconds) {
-  const sign = seconds < 0 ? '-' : ''
-  const totalSeconds = Math.abs(seconds)
-  const min = Math.floor(totalSeconds / 60)
-  const sec = totalSeconds % 60
+  const totalSeconds = Math.max(0, seconds);
+  const min = Math.floor(totalSeconds / 60);
+  const sec = totalSeconds % 60;
 
-  if (min && sec) return `${sign}${min} min ${sec} sec`
-  if (min) return `${sign}${min} min`
-  return `${sign}${sec} sec`
+  if (min && sec) return `${min} min ${sec} sec`;
+  if (min) return `${min} min`;
+  return `${sec} sec`;
 }
