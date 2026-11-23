@@ -83,7 +83,11 @@ function WorkoutSteps({ workout }) {
 
         <p className="muted">Equipment: {labelFor(EQUIPMENT, step.equipment)}</p>
         {step.swappedFrom && (
-          <p className="notice">Swapped in for {step.swappedFrom} to match the equipment you picked.</p>
+          <p className="notice">
+            {step.usedDefaultEquipment
+              ? "This one uses equipment you didn't pick. Try it with help from ARC staff, or skip it."
+              : `Swapped in for ${step.swappedFrom} to match the equipment you picked.`}
+          </p>
         )}
         {step.missingEquipment && (
           <p className="notice">

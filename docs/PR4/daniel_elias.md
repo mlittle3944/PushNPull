@@ -53,8 +53,7 @@ viewProfiles()
 **GitHub Issue:** N/A
 
 ---
-
-## Bugs Fixed
+### Issue #90 – Workout Structure doesn't changed based on experience
 
 **Issue:** https://github.com/mlittle3944/PushNPull/issues/90
 
@@ -69,39 +68,35 @@ viewProfiles()
 ![After Fix](screenshots/daniel_elias_issue90_after.png)
 
 **Explanation:**  
-This was a code bug that was confirmed by the team as a validation bug that doesn't require having to add values in the exercise table. 
+This was a code bug that was confirmed by the team as a validation bug that doesn't require having to add values in the exercise table.
 
 **AI Disclosure**
 -Used AI to help format this markdown file
--Used AI to trace and implement what code I had to change after the prescribe function in plan.js. This includes this code `profile?.experience` buildPlan() function in plan.js, `${routineId}|${profile.goal}|${profile.experience}|...` in the usePlan() method in usePlan.js, and `this.#profile.experience` in the buildPlan() method in planBuilder.js. 
+-Used AI to trace and implement what code I had to change after the prescribe function in plan.js. This includes this code `profile?.experience` buildPlan() function in plan.js, `routineId|{profile.goal}|${profile.experience}|...` in the usePlan() method in usePlan.js, and `this.#profile.experience` in the buildPlan() method in planBuilder.js.
 -Used AI to create the edit the planTest.js to accurately test if my fixes work
 -Used AI for formatRest() function.
 
+
 ---
 
-### Issue #[NUMBER] – [SECOND BUG TITLE]
+### Issue #89 – Notice for swapped exercises provides inaccurate explanation when no equipment is chosen
 
-**Issue:** [GitHub Issue link]  
-**Pull Request:** [GitHub PR link]  
+**Issue:** https://github.com/mlittle3944/PushNPull/issues/89
 
-**Description:**  
-[Briefly explain the second bug.]
+**Pull Request:** https://github.com/mlittle3944/PushNPull/pull/100
 
 **Before Fix:**
 
-![Before Fix](screenshots/daniel_elias_issue[NUMBER]_before.png)
+![Before Fix](screenshots\daniel_elias_issue89_before_result.png)
 
 **After Fix:**
 
-![After Fix](screenshots/daniel_elias_issue[NUMBER]_after.png)
+![After Fix](screenshots\daniel_elias_issue89_after_result.png)
 
 **Explanation:**  
-This was a code bug because [explain how the test demonstrated the problem]. I fixed it by [briefly explain your solution].
+This was a validation test bug because the message contradicts the user's response of not picking an equipment. 
+
+AI Disclosure: No AI was used 
 
 ---
 
-## AI Disclosure
--Used AI to help format this markdown file
--Used AI to trace and implement what code I had to change after the prescribe function in plan.js. This includes this code `profile?.experience` buildPlan() function in plan.js, `${routineId}|${profile.goal}|${profile.experience}|...` in the usePlan() method in usePlan.js, and `this.#profile.experience` in the buildPlan() method in planBuilder.js. 
--Used AI to create the edit the planTest.js to accurately test if my fixes work
--Used AI for formatRest() function.
