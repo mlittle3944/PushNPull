@@ -1,4 +1,4 @@
-kk# Chris Jahner
+# Chris Jahner
 
 **Team:** 10  
 **Project:** PushNPull  
@@ -7,7 +7,7 @@ kk# Chris Jahner
 ## Bug Fix 1 — Invalid Rest-Time Inputs (Issue #92)
 
 **GitHub Issue:** [#92 — `formatRest()` accepts invalid rest-time inputs](https://github.com/mlittle3944/PushNPull/issues/92)  
-**Pull Request:** [#93 — Fix invalid rest time inputs](https://github.com/mlittle3944/PushNPull/pull/93) 
+**Pull Request:** [#93 — Fix invalid rest time inputs](https://github.com/mlittle3944/PushNPull/pull/93)** 
 **Files:** `src/lib/plan.js`, `src/lib/plan.test.js`
 
 **Before:**  
