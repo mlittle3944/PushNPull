@@ -129,14 +129,13 @@ export function buildPlan(routine, allExercises, profile) {
 /** 90 → "1 min 30 sec", 60 → "1 min", 45 → "45 sec" */
 
 export function formatRest(seconds) {
-  if (!Number.isFinite(seconds)) {
-    throw new TypeError('Rest time must be a number.')
+  if (typeof seconds !== 'number' || !Number.isFinite(seconds)) {
+    throw new RangeError('Rest time must be a finite number')
   }
 
-  seconds = Math.max(0, seconds)
-
-  const min = Math.floor(seconds / 60)
-  const sec = seconds % 60
+  const totalSeconds = Math.max(0, seconds)
+  const min = Math.floor(totalSeconds / 60)
+  const sec = totalSeconds % 60
 
   if (min && sec) return `${min} min ${sec} sec`
   if (min) return `${min} min`
