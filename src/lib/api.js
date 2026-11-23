@@ -9,9 +9,13 @@ export async function getProfile(userId) {
 }
 
 export async function saveProfile(userId, fields) {
+  // The name is optional, but inherited databases may keep this column NOT NULL.
+  // Only normalize an explicit null; partial updates must not erase a saved name.
+  const profileFields = { ...fields }
+  if (profileFields.display_name === null) profileFields.display_name = ''
   const { data, error } = await supabase
     .from('profiles')
-    .upsert({ id: userId, ...fields })
+    .upsert({ id: userId, ...profileFields })
     .select()
     .single()
   if (error) throw error
