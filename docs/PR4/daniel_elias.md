@@ -56,26 +56,33 @@ viewProfiles()
 
 ## Bugs Fixed
 
+
 **Issue:** https://github.com/mlittle3944/PushNPull/issues/90
+
 
 **Pull Request:** https://github.com/mlittle3944/PushNPull/pull/97
 
+
 **Before Fix:**
+
 
 ![Before Fix](screenshots/daniel_elias_issue90_before.png)
 
+
 **After Fix:**
+
 
 ![After Fix](screenshots/daniel_elias_issue90_after.png)
 
-**Explanation:**  
-This was a code bug that was confirmed by the team as a validation bug that doesn't require having to add values in the exercise table. 
 
+**Explanation:**  
+This was a code bug that was confirmed by the team as a validation bug that doesn't require having to add values in the exercise table.
 **AI Disclosure**
 -Used AI to help format this markdown file
--Used AI to trace and implement what code I had to change after the prescribe function in plan.js. This includes this code `profile?.experience` buildPlan() function in plan.js, `${routineId}|${profile.goal}|${profile.experience}|...` in the usePlan() method in usePlan.js, and `this.#profile.experience` in the buildPlan() method in planBuilder.js. 
+-Used AI to trace and implement what code I had to change after the prescribe function in plan.js. This includes this code `profile?.experience` buildPlan() function in plan.js, `routineId|{profile.goal}|${profile.experience}|...` in the usePlan() method in usePlan.js, and `this.#profile.experience` in the buildPlan() method in planBuilder.js.
 -Used AI to create the edit the planTest.js to accurately test if my fixes work
 -Used AI for formatRest() function.
+
 
 ---
 

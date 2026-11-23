@@ -100,7 +100,7 @@ export function chooseExercise(exercise, allExercises, equipment = [], used = ne
 export function buildPlan(routine, allExercises, profile) {
   const byId = new Map(allExercises.map((e) => [e.id, e]))
   const days = [...(routine?.routine_days ?? [])].sort((a, b) => a.day_number - b.day_number)
-
+  const usedDefaultEquipment = (profile?.equipment ?? []).length === 0
   return days.map((day) => {
     const used = new Set()
     const steps = [...(day.routine_exercises ?? [])]
@@ -119,7 +119,7 @@ export function buildPlan(routine, allExercises, profile) {
           ...exercise,
           ...prescribe(exercise, profile?.goal, profile?.experience),
           swappedFrom: swappedFrom?.name ?? null,
-          missingEquipment,
+          missingEquipment, usedDefaultEquipment
         }
       })
     return { dayNumber: day.day_number, label: day.label, steps }
