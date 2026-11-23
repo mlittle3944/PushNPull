@@ -32,7 +32,13 @@ export function labelFor(options, value) {
  * Fewer days → full body. 4 days, or brand new → upper/lower. 5+ days → push/pull/legs.
  */
 export function pickRoutineId({ days_per_week, experience }) {
-  if (!days_per_week || days_per_week <= 3) return 'full_body_3'
+  if (!Number.isInteger(days_per_week) ||
+      days_per_week < 2 ||
+      days_per_week > 6) {
+    throw new RangeError('Workout days must be between 2 and 6.')
+  }
+
+  if (days_per_week <= 3) return 'full_body_3'
   if (days_per_week === 4 || experience === 'new') return 'upper_lower_4'
   return 'push_pull_legs'
 }
@@ -114,12 +120,11 @@ export function buildPlan(routine, allExercises, profile) {
 
 /** 90 → "1 min 30 sec", 60 → "1 min", 45 → "45 sec" */
 export function formatRest(seconds) {
-  const sign = seconds < 0 ? '-' : ''
-  const totalSeconds = Math.abs(seconds)
-  const min = Math.floor(totalSeconds / 60)
-  const sec = totalSeconds % 60
+  const totalSeconds = Math.max(0, seconds);
+  const min = Math.floor(totalSeconds / 60);
+  const sec = totalSeconds % 60;
 
-  if (min && sec) return `${sign}${min} min ${sec} sec`
-  if (min) return `${sign}${min} min`
-  return `${sign}${sec} sec`
+  if (min && sec) return `${min} min ${sec} sec`;
+  if (min) return `${min} min`;
+  return `${sec} sec`;
 }
