@@ -105,5 +105,13 @@ describe('formatRest', () => {
     expect(formatRest(-10)).toBe('-10 sec')
   })
 
+  
+  it('rejects invalid rest time inputs', () => {
+    expect(() => formatRest(undefined)).toThrow(RangeError)
+    expect(() => formatRest(null)).toThrow(RangeError)
+    expect(() => formatRest(NaN)).toThrow(RangeError)
+    expect(() => formatRest('invalid')).toThrow(RangeError)
+  })
+
 })
 
