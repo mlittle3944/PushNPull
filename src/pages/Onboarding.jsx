@@ -14,7 +14,7 @@ export default function Onboarding() {
   const [experience, setExperience] = useState(profile?.experience ?? '')
   const [daysPerWeek, setDaysPerWeek] = useState(profile?.days_per_week ?? 3)
   const [equipment, setEquipment] = useState(
-    profile?.equipment?.length ? profile.equipment : ['machines', 'dumbbells', 'bodyweight'],
+    profile?.equipment ?? ['machines', 'dumbbells', 'bodyweight'],
   )
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
