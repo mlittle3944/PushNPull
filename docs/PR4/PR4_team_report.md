@@ -46,9 +46,8 @@ While merging an update version of main back into my Issue 92 branch, I ran into
 <!-- We can add the rest of our test results here. -->
 
 ## 3. Final Test Run
-<!-- This section only requires the screenshot, and an explanation for any failing tests -->
-<!-- We still need to add the final test screenshot
-after everyone's changes are merged. -->
+
+![Final test run](screenshots/final_test_run.png)
 
 ## 4. Feature Decision
 
@@ -56,7 +55,7 @@ As a user of the workout tracker, I want my workout history to be saved, so that
 
 ## 5. Board Snapshot
 
-<!-- We still need to add our GitHub board screenshot here. -->
+![Board showing completed bug issues](screenshots/board.png)
 
 ## 6. Sprint Summary
 
@@ -80,4 +79,6 @@ and testing the code after making changes.
 ### Chris Jahner
 
 During PR4, I worked on two bugs with error handling. The first bug was with `formatRest()` accepting invalid values such as undefined, NaN, and strings. The second cause the application to show an empty page when there was no Supabase config present. For both of these fixes, I wrote an automated test for the intended behavior, and then fixed the code so that those tests passed. The team encountered merge conflicts during development, but were mostly simply resolved. Next sprint we are going to work on actually logging and tracking workout history for users.
-<!-- We can each add what we worked on during this sprint here. -->
+
+### Daniel Elias
+During PR4, I worked on fixing the set, reps, and values for the prescribe function that required new implementation and I fixed the notice swapped messages to reflect the user's choice. Although the implementation was integration between different js files, the prescribe function soley constituted to the values needed to be fixed making it a unit test. Furthermore, bug 1 had the most point of failures present and that is a main reason why it caused a merge conflict when I pushed into my branch. 
